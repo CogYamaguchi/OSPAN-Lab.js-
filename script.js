@@ -1764,6 +1764,7 @@ this.parameters.corrResp=cResp;
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+nTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
   this.parameters.mathFB = 'Too slow!';
@@ -1777,10 +1778,11 @@ if (this.state.ended_on === 'timeout') {
   }else{
     this.parameters.mathFB = 'Error!';
     this.parameters.mathACC = 0;
-    nTrial+=1;
   }
 }
 
+this.parameters.nCorrTrial=nCorrTrial;
+this.parameters.nMathTrial=nTrial;
 }
                 },
                 "title": "math_feedback",
@@ -2278,6 +2280,7 @@ this.parameters.corrResp=cResp;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
+nTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
   this.parameters.mathFB = 'Too slow!';
@@ -2291,10 +2294,11 @@ if (this.state.ended_on === 'timeout') {
   }else{
     this.parameters.mathFB = 'Error!';
     this.parameters.mathACC = 0;
-    nTrial+=1;
   }
 }
 
+this.parameters.nCorrTrial=nCorrTrial;
+this.parameters.nMathTrial=nTrial;
 }
                       },
                       "title": "math_feedback",
@@ -3831,6 +3835,7 @@ this.parameters.corrResp=cResp;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
+nTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
   this.parameters.mathFB = 'Too slow!';
@@ -3844,10 +3849,11 @@ if (this.state.ended_on === 'timeout') {
   }else{
     this.parameters.mathFB = 'Error!';
     this.parameters.mathACC = 0;
-    nTrial+=1;
   }
 }
 
+this.parameters.nCorrTrial=nCorrTrial;
+this.parameters.nMathTrial=nTrial;
 }
                       },
                       "title": "math_feedback",
@@ -4754,23 +4760,56 @@ if (this.state.ended_on === 'timeout') {
       ]
     },
     {
-      "type": "lab.html.Page",
-      "items": [
+      "type": "lab.canvas.Screen",
+      "content": [
         {
-          "type": "text",
-          "content": "You have completed all trials!",
-          "title": ""
+          "type": "i-text",
+          "left": 0,
+          "top": -64,
+          "angle": 0,
+          "width": 718.16,
+          "height": 152.96,
+          "stroke": null,
+          "strokeWidth": 1,
+          "fill": "black",
+          "text": "OSPAN: ${parameters.ospan} \u002F ${parameters.totalLetter}\nAbsolute score: ${parameters.absScore} \u002F ${parameters.nTotalTrial}\n\nMath accuracy: ${parameters.nCorrTrial} \u002F ${parameters.nTrial}\n",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+          "fontSize": "24",
+          "fontFamily": "sans-serif",
+          "lineHeight": 1.16,
+          "textAlign": "center"
+        },
+        {
+          "type": "i-text",
+          "left": 0,
+          "top": 125,
+          "angle": 0,
+          "width": 500.05,
+          "height": 27.12,
+          "stroke": null,
+          "strokeWidth": 1,
+          "fill": "black",
+          "text": "Click a mouth button to exit the experiment.",
+          "fontStyle": "normal",
+          "fontWeight": "bold",
+          "fontSize": "24",
+          "fontFamily": "sans-serif",
+          "lineHeight": 1.16,
+          "textAlign": "center"
         }
       ],
-      "scrollTop": true,
-      "submitButtonText": "Continue →",
-      "submitButtonPosition": "hidden",
+      "viewport": [
+        800,
+        600
+      ],
       "files": {},
-      "responses": {},
+      "responses": {
+        "click": ""
+      },
       "parameters": {},
       "messageHandlers": {},
-      "title": "Bye",
-      "timeout": "1000"
+      "title": "Summary"
     }
   ]
 })
