@@ -53,7 +53,7 @@ const study = lab.util.fromObject({
           "stroke": null,
           "strokeWidth": 1,
           "fill": "black",
-          "text": "V.1.0.0",
+          "text": "V.1.0.1",
           "fontStyle": "normal",
           "fontWeight": "normal",
           "fontSize": "12",
@@ -224,39 +224,19 @@ this.data.viewScale=this.data.dpi/100
           "templateParameters": [
             {
               "test": "0",
-              "trial": "",
-              "setSize": "2",
-              "test_string": "",
-              "input_string": "",
-              "letACC": "",
-              "letFB": ""
+              "setSize": "2"
             },
             {
               "test": "0",
-              "trial": "",
-              "setSize": "2",
-              "test_string": "",
-              "input_string": "",
-              "letACC": "",
-              "letFB": ""
+              "setSize": "2"
             },
             {
               "test": "0",
-              "trial": "",
-              "setSize": "3",
-              "test_string": "",
-              "input_string": "",
-              "letACC": "",
-              "letFB": ""
+              "setSize": "3"
             },
             {
               "test": "0",
-              "trial": "",
-              "setSize": "3",
-              "test_string": "",
-              "input_string": "",
-              "letACC": "",
-              "letFB": ""
+              "setSize": "3"
             }
           ],
           "sample": {
@@ -269,12 +249,12 @@ this.data.viewScale=this.data.dpi/100
           "messageHandlers": {
             "before:prepare": function anonymous(
 ) {
+//for letter trial
 nCorrLetter=0;
 nLetter=0;
-ospan=0;
-nCorrTrial=0;
-nTotalTrial=0;
-absScore=0;
+nLetCorrTrial=0;
+nLetTrial=0;
+
 }
           },
           "title": "PracLetter_Loop",
@@ -344,8 +324,6 @@ this.options.templateParameters = this.random.sample(
   this.options.templateParameters,
   this.parameters.setSize
 )
-console.log(this.options.templateParameters)
-
 
 // Extract the presented stimuli and store them seperately,
 // as a feature of the overall trial sequence.
@@ -1157,29 +1135,6 @@ this.options.events['click @Y']=function(event){
 }
 
 
-},
-                  "after:end": function anonymous(
-) {
-const tString=this.parameters.test_string;
-const iString=this.parameters.input_string;
-
-for (let i=0; i<tString.length; i++) {
-  nLetter+=1;
-  if(tString[i]===iString[i]){
-    nCorrLetter+=1;
-  }
-}
-this.parameters.ospan=nCorrLetter;
-this.parameters.totalLetter=nLetter;
-
-nTotalTrial+=1;
-if(tString===iString){
-  nCorrTrial+=1;
-}
-this.parameters.absScore=nCorrTrial;
-this.parameters.totalTrial=nTotalTrial;
-
-
 }
                 },
                 "title": "letter_input",
@@ -1193,12 +1148,12 @@ this.parameters.totalTrial=nTotalTrial;
                     "left": 0,
                     "top": 0,
                     "angle": 0,
-                    "width": 343.28,
+                    "width": 284.59,
                     "height": 36.16,
                     "stroke": null,
                     "strokeWidth": 1,
                     "fill": "black",
-                    "text": "${this.parameters.letFB}",
+                    "text": "${parameters.letFB}",
                     "fontStyle": "normal",
                     "fontWeight": "normal",
                     "fontSize": 32,
@@ -1229,6 +1184,29 @@ if (this.state.ended_on === 'timeout') {
     this.parameters.letACC = 0;
   }
 }
+
+
+//data log
+const tString=this.state.test_string;
+const iString=this.state.response;
+
+for (let i=0; i<tString.length; i++) {
+  nLetter+=1;
+  if(tString[i]===iString[i]){
+    nCorrLetter+=1;
+  }
+}
+this.parameters.ospan=nCorrLetter;
+this.parameters.nLetter=nLetter;
+
+nLetTrial+=1;
+if(tString.join()===iString.join()){
+  nLetCorrTrial+=1;
+}
+this.parameters.absScore=nLetCorrTrial;
+this.parameters.nLetTrial=nLetTrial;
+
+
 }
                 },
                 "title": "letter_feedback",
@@ -1321,154 +1299,49 @@ if (this.state.ended_on === 'timeout') {
           "type": "lab.flow.Loop",
           "templateParameters": [
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             },
             {
-              "test": "0",
-              "trial": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "mathFB": ""
+              "test": "0"
             }
           ],
           "sample": {
@@ -1481,9 +1354,11 @@ if (this.state.ended_on === 'timeout') {
           "messageHandlers": {
             "before:prepare": function anonymous(
 ) {
-nTrial=0
-nCorrTrial=0;
-nMiss=0;
+//for math trial
+nMathTrial=0
+nMathCorrTrial=0;
+nMathMiss=0;
+
 }
           },
           "title": "PracMath_Loop",
@@ -1503,9 +1378,6 @@ var mTest
 var cResp
 
 //set trial variables
-this.state.trial+=1;
-this.parameters.trial=this.state.trial;
-
 const mathP1 = [
 	"(2 / 1)", "(3 / 1)", "(4 / 1)", "(4 / 2)", "(5 / 1)", "(6 / 1)", 
   "(6 / 2)", "(6 / 3)", "(7 / 1)", "(8 / 1)", "(8 / 2)", "(8 / 4)", 
@@ -1764,25 +1636,26 @@ this.parameters.corrResp=cResp;
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
-nTrial+=1;
+nMathTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
   this.parameters.mathFB = 'Too slow!';
   this.parameters.mathACC = 2;
-  nMiss+=1;
+  nMathMiss+=1;
 } else {
   if (this.state.correct){
     this.parameters.mathFB = 'Correct!';
     this.parameters.mathACC = 1;
-    nCorrTrial+=1;
+    nMathCorrTrial+=1;
   }else{
     this.parameters.mathFB = 'Error!';
     this.parameters.mathACC = 0;
   }
 }
 
-this.parameters.nCorrTrial=nCorrTrial;
-this.parameters.nMathTrial=nTrial;
+this.parameters.nMathCorrTrial=nMathCorrTrial;
+this.parameters.nMathTrial=nMathTrial;
+
 }
                 },
                 "title": "math_feedback",
@@ -1850,51 +1723,15 @@ this.parameters.nMathTrial=nTrial;
           "templateParameters": [
             {
               "test": "0",
-              "trial": "",
-              "setSize": "2",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "methFB": "",
-              "letACC": "",
-              "letFB": ""
+              "setSize": "2"
             },
             {
               "test": "0",
-              "trial": "",
-              "setSize": "2",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "methFB": "",
-              "letACC": "",
-              "letFB": ""
+              "setSize": "2"
             },
             {
               "test": "0",
-              "trial": "",
-              "setSize": "2",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "mathACC": "",
-              "methFB": "",
-              "letACC": "",
-              "letFB": ""
+              "setSize": "2"
             }
           ],
           "sample": {
@@ -1907,19 +1744,17 @@ this.parameters.nMathTrial=nTrial;
           "messageHandlers": {
             "before:prepare": function anonymous(
 ) {
-
 //for letter trial
 nCorrLetter=0;
 nLetter=0;
-ospan=0;
-nCorrTrial=0;
-nTotalTrial=0;
-absScore=0;
+nLetCorrTrial=0;
+nLetTrial=0;
 
 //for math trial
-nTrial=0
-nCorrTrial=0;
-nMiss=0;
+nMathTrial=0
+nMathCorrTrial=0;
+nMathMiss=0;
+
 }
           },
           "title": "PracBoth_Loop",
@@ -1989,8 +1824,6 @@ this.options.templateParameters = this.random.sample(
   this.options.templateParameters,
   this.parameters.setSize
 )
-console.log(this.options.templateParameters)
-
 
 // Extract the presented stimuli and store them seperately,
 // as a feature of the overall trial sequence.
@@ -2019,9 +1852,6 @@ var mTest
 var cResp
 
 //set trial variables
-this.state.trial+=1;
-this.parameters.trial=this.state.trial;
-
 const mathP1 = [
 	"(2 / 1)", "(3 / 1)", "(4 / 1)", "(4 / 2)", "(5 / 1)", "(6 / 1)", 
   "(6 / 2)", "(6 / 3)", "(7 / 1)", "(8 / 1)", "(8 / 2)", "(8 / 4)", 
@@ -2280,25 +2110,26 @@ this.parameters.corrResp=cResp;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
-nTrial+=1;
+nMathTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
   this.parameters.mathFB = 'Too slow!';
   this.parameters.mathACC = 2;
-  nMiss+=1;
+  nMathMiss+=1;
 } else {
   if (this.state.correct){
     this.parameters.mathFB = 'Correct!';
     this.parameters.mathACC = 1;
-    nCorrTrial+=1;
+    nMathCorrTrial+=1;
   }else{
     this.parameters.mathFB = 'Error!';
     this.parameters.mathACC = 0;
   }
 }
 
-this.parameters.nCorrTrial=nCorrTrial;
-this.parameters.nMathTrial=nTrial;
+this.parameters.nMathCorrTrial=nMathCorrTrial;
+this.parameters.nMathTrial=nMathTrial;
+
 }
                       },
                       "title": "math_feedback",
@@ -3106,29 +2937,6 @@ this.options.events['click @Y']=function(event){
 }
 
 
-},
-                  "after:end": function anonymous(
-) {
-const tString=this.parameters.test_string;
-const iString=this.parameters.input_string;
-
-for (let i=0; i<tString.length; i++) {
-  nLetter+=1;
-  if(tString[i]===iString[i]){
-    nCorrLetter+=1;
-  }
-}
-this.parameters.ospan=nCorrLetter;
-this.parameters.totalLetter=nLetter;
-
-nTotalTrial+=1;
-if(tString===iString){
-  nCorrTrial+=1;
-}
-this.parameters.absScore=nCorrTrial;
-this.parameters.totalTrial=nTotalTrial;
-
-
 }
                 },
                 "title": "letter_input",
@@ -3178,6 +2986,30 @@ if (this.state.ended_on === 'timeout') {
     this.parameters.letACC = 0;
   }
 }
+
+//data log
+const tString=this.state.test_string;
+const iString=this.state.response;
+
+for (let i=0; i<tString.length; i++) {
+  nLetter+=1;
+  if(tString[i]===iString[i]){
+    nCorrLetter+=1;
+  }
+}
+this.parameters.ospan=nCorrLetter;
+this.parameters.nLetter=nLetter;
+
+nLetTrial+=1;
+if(tString.join()===iString.join()){
+  nLetCorrTrial+=1;
+}
+this.parameters.absScore=nLetCorrTrial;
+this.parameters.nLetTrial=nLetTrial;
+
+
+
+
 }
                 },
                 "title": "letter_feedback",
@@ -3259,198 +3091,63 @@ if (this.state.ended_on === 'timeout') {
           "templateParameters": [
             {
               "test": "1",
-              "trial": "",
-              "setSize": "3",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "3"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "3",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "3"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "3",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "3"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "4",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "4"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "4",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "4"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "4",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "4"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "5",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "5"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "5",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "5"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "5",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "5"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "6",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "6"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "6",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "6"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "6",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "6"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "7",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "7"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "7",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "7"
             },
             {
               "test": "1",
-              "trial": "",
-              "setSize": "7",
-              "test_string": "",
-              "input_string": "",
-              "ACC": "",
-              "mathProb": "",
-              "mathAnswer": "",
-              "mathTest": "",
-              "corrResp": "",
-              "feedback": ""
+              "setSize": "7"
             }
           ],
           "sample": {
@@ -3466,15 +3163,14 @@ if (this.state.ended_on === 'timeout') {
 //for letter trial
 nCorrLetter=0;
 nLetter=0;
-ospan=0;
-nCorrTrial=0;
-nTotalTrial=0;
-absScore=0;
+nLetCorrTrial=0;
+nLetTrial=0;
 
 //for math trial
-nTrial=0
-nCorrTrial=0;
-nMiss=0;
+nMathTrial=0
+nMathCorrTrial=0;
+nMathMiss=0;
+
 }
           },
           "title": "TestBoth_Loop",
@@ -3544,8 +3240,6 @@ this.options.templateParameters = this.random.sample(
   this.options.templateParameters,
   this.parameters.setSize
 )
-console.log(this.options.templateParameters)
-
 
 // Extract the presented stimuli and store them seperately,
 // as a feature of the overall trial sequence.
@@ -3574,9 +3268,6 @@ var mTest
 var cResp
 
 //set trial variables
-this.state.trial+=1;
-this.parameters.trial=this.state.trial;
-
 const mathP1 = [
 	"(2 / 1)", "(3 / 1)", "(4 / 1)", "(4 / 2)", "(5 / 1)", "(6 / 1)", 
   "(6 / 2)", "(6 / 3)", "(7 / 1)", "(8 / 1)", "(8 / 2)", "(8 / 4)", 
@@ -3835,25 +3526,27 @@ this.parameters.corrResp=cResp;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
-nTrial+=1;
+nMathTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
   this.parameters.mathFB = 'Too slow!';
   this.parameters.mathACC = 2;
-  nMiss+=1;
+  nMathMiss+=1;
 } else {
   if (this.state.correct){
     this.parameters.mathFB = 'Correct!';
     this.parameters.mathACC = 1;
-    nCorrTrial+=1;
+    nMathCorrTrial+=1;
   }else{
     this.parameters.mathFB = 'Error!';
     this.parameters.mathACC = 0;
   }
 }
 
-this.parameters.nCorrTrial=nCorrTrial;
-this.parameters.nMathTrial=nTrial;
+this.parameters.nMathCorrTrial=nMathCorrTrial;
+this.parameters.nMathTrial=nMathTrial;
+
+
 }
                       },
                       "title": "math_feedback",
@@ -4661,29 +4354,6 @@ this.options.events['click @Y']=function(event){
 }
 
 
-},
-                  "after:end": function anonymous(
-) {
-const tString=this.parameters.test_string;
-const iString=this.parameters.input_string;
-
-for (let i=0; i<tString.length; i++) {
-  nLetter+=1;
-  if(tString[i]===iString[i]){
-    nCorrLetter+=1;
-  }
-}
-this.parameters.ospan=nCorrLetter;
-this.parameters.totalLetter=nLetter;
-
-nTotalTrial+=1;
-if(tString===iString){
-  nCorrTrial+=1;
-}
-this.parameters.absScore=nCorrTrial;
-this.parameters.totalTrial=nTotalTrial;
-
-
 }
                 },
                 "title": "letter_input",
@@ -4733,6 +4403,28 @@ if (this.state.ended_on === 'timeout') {
     this.parameters.letACC = 0;
   }
 }
+
+//data log
+const tString=this.state.test_string;
+const iString=this.state.response;
+
+for (let i=0; i<tString.length; i++) {
+  nLetter+=1;
+  if(tString[i]===iString[i]){
+    nCorrLetter+=1;
+  }
+}
+this.parameters.ospan=nCorrLetter;
+this.parameters.nLetter=nLetter;
+
+nLetTrial+=1;
+if(tString.join()===iString.join()){
+  nLetCorrTrial+=1;
+}
+this.parameters.absScore=nLetCorrTrial;
+this.parameters.nLetTrial=nLetTrial;
+
+
 }
                 },
                 "title": "letter_feedback",
@@ -4756,60 +4448,95 @@ if (this.state.ended_on === 'timeout') {
               }
             ]
           }
-        }
-      ]
-    },
-    {
-      "type": "lab.canvas.Screen",
-      "content": [
-        {
-          "type": "i-text",
-          "left": 0,
-          "top": -64,
-          "angle": 0,
-          "width": 718.16,
-          "height": 152.96,
-          "stroke": null,
-          "strokeWidth": 1,
-          "fill": "black",
-          "text": "OSPAN: ${parameters.ospan} \u002F ${parameters.totalLetter}\nAbsolute score: ${parameters.absScore} \u002F ${parameters.nTotalTrial}\n\nMath accuracy: ${parameters.nCorrTrial} \u002F ${parameters.nTrial}\n",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-          "fontSize": "24",
-          "fontFamily": "sans-serif",
-          "lineHeight": 1.16,
-          "textAlign": "center"
         },
         {
-          "type": "i-text",
-          "left": 0,
-          "top": 125,
-          "angle": 0,
-          "width": 500.05,
-          "height": 27.12,
-          "stroke": null,
-          "strokeWidth": 1,
-          "fill": "black",
-          "text": "Click a mouth button to exit the experiment.",
-          "fontStyle": "normal",
-          "fontWeight": "bold",
-          "fontSize": "24",
-          "fontFamily": "sans-serif",
-          "lineHeight": 1.16,
-          "textAlign": "center"
+          "type": "lab.canvas.Screen",
+          "content": [
+            {
+              "type": "i-text",
+              "left": 0,
+              "top": -100,
+              "angle": 0,
+              "width": 863.91,
+              "height": 152.96,
+              "stroke": null,
+              "strokeWidth": 1,
+              "fill": "black",
+              "text": "OSPAN: ${this.parameters.ospan} \u002F ${this.parameters.totalLetter}\nAbsolute score: ${this.parameters.absScore} \u002F ${this.parameters.nTotalLetTrial}\n\nMath accuracy: ${this.parameters.nMathCorrTrial} \u002F ${this.parameters.nMathTrial}\n",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+              "fontSize": "24",
+              "fontFamily": "sans-serif",
+              "lineHeight": 1.16,
+              "textAlign": "center"
+            },
+            {
+              "type": "i-text",
+              "left": -25,
+              "top": 350,
+              "angle": 0,
+              "width": 500.05,
+              "height": 27.12,
+              "stroke": null,
+              "strokeWidth": 1,
+              "fill": "black",
+              "text": "Click a mouth button to exit the experiment.",
+              "fontStyle": "normal",
+              "fontWeight": "bold",
+              "fontSize": "24",
+              "fontFamily": "sans-serif",
+              "lineHeight": 1.16,
+              "textAlign": "center"
+            },
+            {
+              "type": "i-text",
+              "left": 0,
+              "top": 125,
+              "angle": 0,
+              "width": 246.68,
+              "height": 27.12,
+              "stroke": null,
+              "strokeWidth": 1,
+              "fill": "black",
+              "text": "Press a mouth button",
+              "fontStyle": "normal",
+              "fontWeight": "bold",
+              "fontSize": "24",
+              "fontFamily": "sans-serif",
+              "lineHeight": 1.16,
+              "textAlign": "center"
+            }
+          ],
+          "viewport": [
+            800,
+            600
+          ],
+          "files": {},
+          "responses": {
+            "click": ""
+          },
+          "parameters": {},
+          "messageHandlers": {
+            "before:prepare": function anonymous(
+) {
+
+this.parameters.ospan=nCorrLetter;
+this.parameters.nLetter=nLetter;
+
+this.parameters.absScore=nLetCorrTrial;
+this.parameters.nLetTrial=nLetTrial;
+
+this.parameters.nMathCorrTrial=nMathCorrTrial;
+this.parameters.nMathTrial=nMathTrial;
+
+
+
+
+}
+          },
+          "title": "Summary"
         }
-      ],
-      "viewport": [
-        800,
-        600
-      ],
-      "files": {},
-      "responses": {
-        "click": ""
-      },
-      "parameters": {},
-      "messageHandlers": {},
-      "title": "Summary"
+      ]
     }
   ]
 })
