@@ -3174,18 +3174,6 @@ nMathTrial=0
 nMathCorrTrial=0;
 nMathMiss=0;
 
-},
-            "after:end": function anonymous(
-) {
-this.state.ospan=nCorrLetter;
-this.state.nLetter=nLetter;
-
-this.state.absScore=nLetCorrTrial;
-this.state.nLetTrial=nLetTrial;
-
-this.state.nMathCorrTrial=nMathCorrTrial;
-this.state.nMathTrial=nMathTrial;
-
 }
           },
           "title": "TestBoth_Loop",
@@ -4467,91 +4455,24 @@ this.parameters.nLetTrial=nLetTrial;
       ]
     },
     {
-      "type": "lab.canvas.Screen",
-      "content": [
+      "type": "lab.html.Page",
+      "items": [
         {
-          "type": "i-text",
-          "left": 0,
-          "top": -100,
-          "angle": 0,
-          "width": 775.88,
-          "height": 152.96,
-          "stroke": null,
-          "strokeWidth": 1,
-          "fill": "black",
-          "text": "OSPAN: ${parameters.ospan} \u002F ${parameters.totalLetter}\nAbsolute score: ${parameters.absScore} \u002F ${parameters.nTotalLetTrial}\n\nMath accuracy: ${parameters.nMathCorrTrial} \u002F ${parameters.nMathTrial}\n",
-          "fontStyle": "normal",
-          "fontWeight": "normal",
-          "fontSize": "24",
-          "fontFamily": "sans-serif",
-          "lineHeight": 1.16,
-          "textAlign": "center"
-        },
-        {
-          "type": "i-text",
-          "left": -25,
-          "top": 350,
-          "angle": 0,
-          "width": 500.05,
-          "height": 27.12,
-          "stroke": null,
-          "strokeWidth": 1,
-          "fill": "black",
-          "text": "Click a mouth button to exit the experiment.",
-          "fontStyle": "normal",
-          "fontWeight": "bold",
-          "fontSize": "24",
-          "fontFamily": "sans-serif",
-          "lineHeight": 1.16,
-          "textAlign": "center"
-        },
-        {
-          "type": "i-text",
-          "left": 0,
-          "top": 125,
-          "angle": 0,
-          "width": 246.68,
-          "height": 27.12,
-          "stroke": null,
-          "strokeWidth": 1,
-          "fill": "black",
-          "text": "Press a mouth button",
-          "fontStyle": "normal",
-          "fontWeight": "bold",
-          "fontSize": "24",
-          "fontFamily": "sans-serif",
-          "lineHeight": 1.16,
-          "textAlign": "center"
+          "type": "text",
+          "content": "\u003Cstrong\u003E You have completed all trials. Press a mouse key to go next. \u003C\u002Fstrong\u003E"
         }
       ],
-      "viewport": [
-        800,
-        600
-      ],
+      "scrollTop": true,
+      "submitButtonText": "Continue →",
+      "submitButtonPosition": "hidden",
       "files": {},
       "responses": {
         "click": ""
       },
       "parameters": {},
-      "messageHandlers": {
-        "before:prepare": function anonymous(
-) {
-
-this.parameters.ospan=this.state.ospan;
-this.parameters.nLetter=this.state.nLetter;
-
-this.parameters.absScore=this.state.absScore;
-this.parameters.nLetTrial=this.state.nLetTrial;
-
-this.parameters.nMathCorrTrial=this.state.nMathCorrTrial;
-this.parameters.nMathTrial=this.state.nMathTrial;
-
-
-
-
-}
-      },
-      "title": "Summary"
+      "messageHandlers": {},
+      "title": "Page",
+      "timeout": "1000"
     }
   ]
 })
