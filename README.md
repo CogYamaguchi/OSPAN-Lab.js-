@@ -4,7 +4,7 @@ This respository hosts an operational span task, a popular experimental paradigm
 
 https://cogyamaguchi.github.io/OSPAN-Lab.js-/ 
 
-in a sruvey. See the instructions [here](https://labjs.readthedocs.io/en/latest/learn/deploy/3a-qualtrics.html) as to how you can integrate into a Qualtrics survey.
+in a sruvey. See the instructions [here](https://labjs.readthedocs.io/en/latest/learn/deploy/3a-qualtrics.html) as to how you can integrate a Lab.js experiment into a Qualtrics survey.
 
 The task is created based on Foster et al. (2014). 
 
