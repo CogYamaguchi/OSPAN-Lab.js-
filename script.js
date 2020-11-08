@@ -165,7 +165,7 @@ this.data.viewScale=this.data.dpi/100
           "items": [
             {
               "type": "text",
-              "content": "\u003Cp\u003EIn this experiment you will try to memorise letters you see on the screen while you also solve simple math problems. \u003C\u002Fp\u003E\n\n\u003Cp\u003EIn the next few minutes, you will have some practice to get you familiar with how the experiment works.\u003C\u002Fp\u003E\n\n\u003Cp\u003EWe will begin by practicing the letter part of the experiment.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to begin\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003EIn this experiment, your task is to memorise letters you see on the screen while you also solve simple math problems. You will start with practice to get you familiar with how the experiment works. We will begin by practicing the letter part of the experiment.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to begin\u003C\u002Fp\u003E",
               "title": "Welcome to the experiment!"
             }
           ],
@@ -186,7 +186,7 @@ this.data.viewScale=this.data.dpi/100
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003EFor this practice set, letters will appear on the screen one at a time. Try to remember each letter in the order presented.\u003C\u002Fp\u003E\n\n\u003Cp\u003EAfter 2-3 letters have been shown, you will see a screen listing 12 possible letters. Your job is to select each letter in the order presented. To do this, click the letters you want to select. The letters you select will appear at the upper portion of the screen.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to begin\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003EFor the first practice block, letters will appear on the screen one at a time. Try to remember each letter in the order they appear on the screen.\u003C\u002Fp\u003E\n\n\u003Cp\u003EAfter 2-3 letters have been presented, you will see a screen listing 12 possible letters. Your job is to select all letters in the order presented. To do this, click the letters you want to select. The letters you select will appear at the upper portion of the screen.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to begin\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -207,7 +207,7 @@ this.data.viewScale=this.data.dpi/100
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003EWhen you have selected all the letters, and they are in the correct order, hit NEXT button.\u003C\u002Fp\u003E\n\n\u003Cp\u003EIf you make a mistake, hit UNDO button to delete the last letter.\u003C\u002Fp\u003E\n\n\u003Cp\u003EIf you forget one of the letters, click SPACE to insert a blank space and continue entering the subsequent letters. If you do not insert a blank for a forgotten letter, all subsequent letters will be marked as incorrect (as their positions in the sequence will be wrong). Remember, it is very important to get the letters in the same order as you see them. If you forget one, use SPACE to mark the position.\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to try some practice trials.\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003EWhen you have selected all the letters, and they are in the correct order, click NEXT button. Click UNDO button to delete the last letter if you make a mistake.\u003C\u002Fp\u003E\n\n\u003Cp\u003EIf you forget one of the letters, click SPACE to insert a blank space and continue entering the subsequent letters. If you do not insert a blank for a forgotten letter, all subsequent letters will be shifted and marked as incorrect (as their positions in the sequence will be incorrect). Remember that it is very important to report the letters in the same order as you see them. If you forget one, use SPACE to mark the position.\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to start practice trials.\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -373,14 +373,11 @@ this.options.templateParameters = this.random.sample(
                   "messageHandlers": {
                     "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 // We don't need screen-by-screen data
 this.options.datacommit = false
 
-/*
-console.log(testString)
-testString=testString + this.parameters.stimulus
-console.log(testString)
-*/
 }
                   },
                   "title": "letter_presentation",
@@ -1035,6 +1032,8 @@ console.log(testString)
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 var respString = [];
 
 // Render the base canvas
@@ -1175,6 +1174,8 @@ this.options.events['click @Y']=function(event){
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 if (this.state.ended_on === 'timeout') {
   this.parameters.letFB = 'Too slow!';
   this.parameters.letACC = 2;
@@ -1241,7 +1242,7 @@ this.parameters.nLetTrial=nLetTrial;
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003ENow you will practice doing the math part of the experiment. A math problem will appear on the screen, like this:\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003E(2 * 1) + 1 = ?\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003EAs soon as you see the math problem, you should compute the correct answer. In the above problem, the answer 3 is correct.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003ENow you will practice doing the math part of the experiment. A math problem will appear on the screen, like this:\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003E(2 * 1) + 1 = ?\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003EAs soon as you see the math problem, compute the answer and click the display. In the above problem, the correct answer is 3.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -1262,7 +1263,7 @@ this.parameters.nLetTrial=nLetTrial;
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003EYou will see a number displayed on the next screen, along with the words \"TRUE\" and \"FALSE.\" If the number on the screen is the correct answer to the math problem, click TRUE with the mouse. If the number is not the correct answer, click FALSE. For example, if you see the problem\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003E(2 * 2) + 1 = ?\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003Eand the number on the following screen is 5, click TRUE because the answer is correct. \u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003EYou will then see a number displayed on the next screen, along with the words \"TRUE\" and \"FALSE.\" If the number on the screen is the correct answer, click TRUE. If the number is not the correct answer, click FALSE. For example, if you see the problem\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003E(2 * 2) + 1 = ?\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003Eand the number on the following screen is 5, click TRUE because the answer is correct. \u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -1283,7 +1284,7 @@ this.parameters.nLetTrial=nLetTrial;
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003EIf you see the problem\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003E(2 * 2) + 1 =  ?\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003Eand the number on the next screen is 6, click FALSE because the correct answer is 5, not 6. After you give your response, the computer will tell you if you made the right choice. \u003C\u002Fp\u003E\n\n\u003Cp\u003EIt is VERY important that you get the math problems correct. It is also important that you try and solve the problem as quickly as you can.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to try practice trials.\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003EIf you see the problem\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003E(2 * 2) + 1 =  ?\u003C\u002Fp\u003E\n\u003Cbr\u003E\n\u003Cp\u003Eand the number on the next screen is 6, click FALSE because the correct answer is 5, not 6. After you give your response, the computer will tell you if you made the right choice. \u003C\u002Fp\u003E\n\n\u003Cp\u003EIt is very important that you get the math problems correct. It is also important that you try and solve the problem as quickly as you can.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to start practice trials.\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -1506,7 +1507,12 @@ this.parameters.corrResp=cResp;
                   "click(0)": ""
                 },
                 "parameters": {},
-                "messageHandlers": {},
+                "messageHandlers": {
+                  "before:prepare": function anonymous(
+) {
+this.options.viewportScale = this.state.viewScale
+}
+                },
                 "title": "math_study"
               },
               {
@@ -1601,7 +1607,12 @@ this.parameters.corrResp=cResp;
                   "click(0) @false": "FALSE"
                 },
                 "parameters": {},
-                "messageHandlers": {},
+                "messageHandlers": {
+                  "before:prepare": function anonymous(
+) {
+this.options.viewportScale = this.state.viewScale
+}
+                },
                 "title": "math_test",
                 "timeout": "5000",
                 "correctResponse": "${parameters.corrResp}",
@@ -1639,6 +1650,8 @@ this.parameters.corrResp=cResp;
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 nMathTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
@@ -1685,7 +1698,7 @@ this.parameters.nMathTrial=nMathTrial;
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003ENow you will practice doing both parts of the experiment at the same time. In the next practice set, you will be given one of the math problems. Once you make your decision about the math problem, a letter will appear on the screen. Try and remember the letter. After the letter goes away, another math problem will appear, and then another letter.\u003C\u002Fp\u003E\n\n\u003Cp\u003EAt the end of each set of letters and math problems, a recall screen will appear. Use the mouse to select the letters you just saw. Try your best to get the letters in the correct order. \u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button.\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003ENow you will practice doing both parts of the experiment at the same time. In the next practice set, you will be given one of the math problems. Once you complete the math problem, a letter will appear on the screen. Remember the letter. After the letter goes away, another math problem will appear, followed by another letter.\u003C\u002Fp\u003E\n\n\u003Cp\u003EAt the end of each set of letters and math problems, a recall screen will appear. Use the mouse to select the letters you just saw after the math problems. Try your best to report the letters in the correct order. \u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button.\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -1706,7 +1719,7 @@ this.parameters.nMathTrial=nMathTrial;
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003EIt is important to work QUICKLY and ACCURATELY on the math. Make sure you know the answer to the math problem before clicking to the next screen. You will not be told if your answer to the math problem is correct, but it is still important to keep your accuracy above 85%.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to try some practice problems.\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003ERemember that it is very important to work QUICKLY and ACCURATELY on the math problems. Make sure you know the answer to the math problem before clicking to the next screen. You will not be told if your answer to the math problem is correct, but it is still important to keep your accuracy above 85%.\u003C\u002Fp\u003E\n\n\u003Cbr\u003E\n\u003Cp\u003EClick a mouse button to start practice trials.\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -1980,7 +1993,12 @@ this.parameters.corrResp=cResp;
                         "click(0)": ""
                       },
                       "parameters": {},
-                      "messageHandlers": {},
+                      "messageHandlers": {
+                        "before:prepare": function anonymous(
+) {
+this.options.viewportScale = this.state.viewScale
+}
+                      },
                       "title": "math_study"
                     },
                     {
@@ -2075,7 +2093,12 @@ this.parameters.corrResp=cResp;
                         "click(0) @false": "FALSE"
                       },
                       "parameters": {},
-                      "messageHandlers": {},
+                      "messageHandlers": {
+                        "before:prepare": function anonymous(
+) {
+this.options.viewportScale = this.state.viewScale
+}
+                      },
                       "title": "math_test",
                       "timeout": "5000",
                       "correctResponse": "${parameters.corrResp}",
@@ -2113,6 +2136,8 @@ this.parameters.corrResp=cResp;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 nMathTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
@@ -2173,14 +2198,11 @@ this.parameters.nMathTrial=nMathTrial;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 // We don't need screen-by-screen data
 //this.options.datacommit = false
 
-/*
-console.log(testString)
-testString=testString + this.parameters.stimulus
-console.log(testString)
-*/
 }
                       },
                       "title": "letter_presentation",
@@ -2837,6 +2859,8 @@ console.log(testString)
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 var respString = [];
 
 // Render the base canvas
@@ -2977,6 +3001,8 @@ this.options.events['click @Y']=function(event){
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 if (this.state.ended_on === 'timeout') {
   this.parameters.letFB = 'Too slow!';
   this.parameters.letACC = 2;
@@ -3053,7 +3079,7 @@ this.parameters.nLetTrial=nLetTrial;
             {
               "required": true,
               "type": "text",
-              "content": "\u003Cp\u003E\u003Cstrong\u003EThat is the end of the practice. \u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\n\n\u003Cp\u003EThe real trials will look like the practice trials you just completed. First, you will get a math problem to solve, then a letter to remember. When you see the recall screen, select the letters in the order presented. If you forget a letter, click SPACE to mark where it should go. Some of the sets will have more math problems and letters than others.\u003C\u002Fp\u003E\n\n\u003Cp\u003EClick a mouse button to begin the experiment.\u003C\u002Fp\u003E",
+              "content": "\u003Cp\u003E\u003Cstrong\u003EThat is the end of the practice. \u003C\u002Fstrong\u003E\u003C\u002Fp\u003E\n\n\u003Cp\u003EThe real trials will look like the practice trials you just completed. First, you will be given a math problem to solve, then a letter to remember. When you are prompted, select the letters in the order presented. If you forget a letter, click SPACE to mark the position of the forgotten letter. Some of the sets will have more math problems and letters than others.\u003C\u002Fp\u003E\n\n\u003Cp\u003EClick a mouse button to begin test trials.\u003C\u002Fp\u003E",
               "title": ""
             }
           ],
@@ -3396,7 +3422,12 @@ this.parameters.corrResp=cResp;
                         "click(0)": ""
                       },
                       "parameters": {},
-                      "messageHandlers": {},
+                      "messageHandlers": {
+                        "before:prepare": function anonymous(
+) {
+this.options.viewportScale = this.state.viewScale
+}
+                      },
                       "title": "math_study"
                     },
                     {
@@ -3491,7 +3522,12 @@ this.parameters.corrResp=cResp;
                         "click(0) @false": "FALSE"
                       },
                       "parameters": {},
-                      "messageHandlers": {},
+                      "messageHandlers": {
+                        "before:prepare": function anonymous(
+) {
+this.options.viewportScale = this.state.viewScale
+}
+                      },
                       "title": "math_test",
                       "timeout": "5000",
                       "correctResponse": "${parameters.corrResp}",
@@ -3529,6 +3565,8 @@ this.parameters.corrResp=cResp;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 nMathTrial+=1;
 
 if (this.state.ended_on === 'timeout') {
@@ -3590,14 +3628,11 @@ this.parameters.nMathTrial=nMathTrial;
                       "messageHandlers": {
                         "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 // We don't need screen-by-screen data
 //this.options.datacommit = false
 
-/*
-console.log(testString)
-testString=testString + this.parameters.stimulus
-console.log(testString)
-*/
 }
                       },
                       "title": "letter_presentation",
@@ -4254,6 +4289,8 @@ console.log(testString)
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 var respString = [];
 
 // Render the base canvas
@@ -4394,6 +4431,8 @@ this.options.events['click @Y']=function(event){
                 "messageHandlers": {
                   "before:prepare": function anonymous(
 ) {
+this.options.viewportScale = this.state.viewScale
+
 if (this.state.ended_on === 'timeout') {
   this.parameters.letFB = 'Too slow!';
   this.parameters.letACC = 2;
